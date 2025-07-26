@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Deyoungprof | Creative Hub</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #021A73, #060710);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #000;
+      padding: 30px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff9b4;
+      width: 250px;
+      padding: 20px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 130vh;
+    }
+
+    .header-img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .card h1 {
+      font-size: 1.6em;
+      font-weight: 900;
+      color: #0d1b89;
+      margin-bottom: 0.2em;
+    }
+
+    .card h2 {
+      font-size: 1.2em;
+      color: #F58A07;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 25px;
+      font-size: 0.9em;
+    }
+
+    ul li {
+      margin-bottom: 5px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .nav-buttons a {
+      background: #001B78;
+      color: white;
+      padding: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      border-left: 5px solid #F58A07;
+      font-size: 0.9em;
+      transition: all 0.3s ease;
+    }
+
+    .nav-buttons a:hover {
+      transform: scale(1.03);
+      background: #002499;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta-button {
+      background: orange;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 10px;
+      border: none;
+      font-weight: bold;
+      font-size: 0.9em;
+      margin-bottom: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background: #ff9900;
+      transform: scale(1.05);
+    }
+
+    .alt-option {
+      font-size: 0.85em;
+      color: #333;
+    }
+
+    .alt-option a {
+      text-decoration: none;
+      color: #000;
+      border-bottom: 1px solid #000;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .alt-option a:hover {
+      color: #001B78;
+      border-color: transparent;
+      text-decoration: underline;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 0.75em;
+      color: #000;
+      text-align: center;
+      padding-top: 10px;
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .top-slider {
+      display: flex;
+      gap: 10px;
+      position: absolute;
+      top: -20px;
+      z-index: 2;
+    }
+
+    .top-slider img {
+      height: 150px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: all 0.4s ease;
+    }
+
+    .top-slider img:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+      cursor: pointer;
+    }
+
+    .welcome-box {
+      width: 100%;
+      background: #fff9b4;
+      border-radius: 100px;
+      padding: 120px 30px 600px 30px;
+      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .welcome-box h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      color: #001B78;
+      text-shadow: 1px 1px 2px #00000033;
+      margin-bottom: 20px;
+    }
+
+    .welcome-box p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      color: #222;
+      line-height: 1.7;
+    }
+
+    .right-bar {
+      background: #001B78;
+      color: white;
+      width: 240px;
+      padding: 20px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      height: 130vh;
+    }
+
+    .right-bar h3 {
+      background: white;
+      color: #001B78;
+      text-align: center;
+      font-size: 0.9em;
+      font-weight: bold;
+      padding: 8px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .partner-img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      transition: all 0.4s ease;
+    }
+
+    .partner-img:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+      cursor: pointer;
+    }
+
+    .contact-info {
+      font-size: 0.75em;
+      line-height: 1.5;
+      margin-top: 20px;
+    }
+
+    .contact-info b {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .btn-orange {
+      background: #F58A07;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 10px;
+      display: inline-block;
+      text-decoration: none;
+      font-size: 0.85em;
+      transition: all 0.3s ease;
+    }
+
+    .btn-orange:hover {
+      background: #ff9a1f;
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+
+    @media (max-width: 1000px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .right-bar, .card {
+        width: 100%;
+        height: auto;
+      }
+
+      .top-slider {
+        position: static;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .welcome-box h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- LEFT SIDEBAR -->
+    <div class="card" data-aos="fade-right">
+      <div>
+        <img src="x.png" alt="Header Image" class="header-img" />
+        <h1>Deyoungprof</h1>
+        <h2>Creative Hub</h2>
+        <ul>
+          <li>Building Brand Identities.</li>
+          <li>Forward-thinking Designs.</li>
+          <li>Web Designer in progress.</li>
+          <li>Creative High-Impact Visuals.</li>
+          <li>Clean UI and Useful Solutions.</li>
+        </ul>
+        <div class="nav-buttons">
+          <a href="#">Graphics Design Page</a>
+          <a href="#">Web Design Page</a>
+          <a href="#">InnerVerse Network Page</a>
+          <a href="#">The Discourse of Salem</a>
+          <a href="#">Other Products and Services</a>
+        </div>
+        <button class="cta-button">Send us a DM</button>
+        <div class="alt-option">OR<br>← <a href="#">Check Our Portfolio</a></div>
+      </div>
+      <div class="footer">
+        (C) 2025 <br>
+        Deyoungprof Creative Hub <br>
+        – Created With Passion –
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content" data-aos="zoom-in-up">
+      <div class="top-slider">
+        <img src="S1.jpg" alt="Slide 1" data-aos="zoom-in" data-aos-delay="0" />
+        <img src="S2.jpg" alt="Slide 2" data-aos="zoom-in" data-aos-delay="100" />
+        <img src="S3.jpg" alt="Slide 3" data-aos="zoom-in" data-aos-delay="200" />
+        <img src="S4.jpg" alt="Slide 4" data-aos="zoom-in" data-aos-delay="300" />
+        <img src="S5.jpg" alt="Slide 5" data-aos="zoom-in" data-aos-delay="400" />
+      </div>
+
+      <div class="welcome-box">
+        <h1 data-aos="fade-up" data-aos-delay="500">Welcome</h1>
+        <p data-aos="fade-up" data-aos-delay="700">
+          You're at the right place for original designs, smart execution, and clean visual experiences all powered by 
+          <strong>Deyoungprof Creative Hub</strong>. Let's build your next masterpiece together.
+        </p>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="right-bar" data-aos="fade-left">
+      <div>
+        <h3>Visit our Partners</h3>
+        <img src="A1.png" alt="Partner 1" class="partner-img" data-aos="fade-up" data-aos-delay="0" />
+        <img src="A2.jpg" alt="Partner 2" class="partner-img" data-aos="fade-up" data-aos-delay="150" />
+        <img src="A3.jpg" alt="Partner 3" class="partner-img" data-aos="fade-up" data-aos-delay="300" />
+      </div>
+      <div class="contact-info" data-aos="fade-up" data-aos-delay="400">
+        <b>Send YOUR Adverts to our PR</b>
+        +234 814 360 8121 <br>
+        Deyoungprofstories@gmail.com
+        <a class="btn-orange">Customer Relations</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1200, once: true });
+  </script>
+</body>
+</html>
