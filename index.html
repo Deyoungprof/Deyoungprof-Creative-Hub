@@ -6,6 +6,16 @@
   <title>Deyoungprof | Creative Hub</title>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
+    :root {
+      --bg-gradient: linear-gradient(to bottom right, #021A73, #060710);
+      --text-color: #000;
+      --card-bg: #fff9b4;
+      --rightbar-bg: #001B78;
+      --rightbar-text: white;
+      --link-hover: #002499;
+      --button-bg: orange;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -13,10 +23,11 @@
     }
 
     body {
-      background: linear-gradient(to bottom right, #021A73, #060710);
+      background: var(--bg-gradient);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #000;
+      color: var(--text-color);
       padding: 30px;
+      transition: all 0.3s ease;
     }
 
     .container {
@@ -27,7 +38,7 @@
     }
 
     .card {
-      background: #fff9b4;
+      background: var(--card-bg);
       width: 250px;
       padding: 20px;
       border-radius: 20px;
@@ -35,6 +46,7 @@
       flex-direction: column;
       justify-content: space-between;
       height: 130vh;
+      transition: background 0.3s ease;
     }
 
     .header-img {
@@ -87,12 +99,12 @@
 
     .nav-buttons a:hover {
       transform: scale(1.03);
-      background: #002499;
+      background: var(--link-hover);
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     .cta-button {
-      background: orange;
+      background: var(--button-bg);
       color: white;
       padding: 10px 18px;
       border-radius: 10px;
@@ -123,7 +135,7 @@
     }
 
     .alt-option a:hover {
-      color: #001B78;
+      color: var(--link-hover);
       border-color: transparent;
       text-decoration: underline;
     }
@@ -167,14 +179,13 @@
 
     .welcome-box {
       width: 100%;
-      background: #fff9b4;
+      background: var(--card-bg);
       border-radius: 100px;
-      padding: 120px 30px 600px 30px;
+      padding: 120px 20px 700px 20px;
       margin-top: 50px;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      text-align: center;
     }
 
     .welcome-box h1 {
@@ -182,25 +193,18 @@
       font-weight: 900;
       color: #001B78;
       text-shadow: 1px 1px 2px #00000033;
-      margin-bottom: 20px;
-    }
-
-    .welcome-box p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      color: #222;
-      line-height: 1.7;
     }
 
     .right-bar {
-      background: #001B78;
-      color: white;
+      background: var(--rightbar-bg);
+      color: var(--rightbar-text);
       width: 240px;
       padding: 20px;
       border-radius: 20px;
       display: flex;
       flex-direction: column;
       height: 130vh;
+      transition: all 0.3s ease;
     }
 
     .right-bar h3 {
@@ -279,10 +283,35 @@
       .welcome-box h1 {
         font-size: 2.5rem;
       }
+
+      /* === Global Hover Effect for All Images === */
+img:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
     }
   </style>
 </head>
 <body>
+
+  <button id="theme-toggle" style="
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    background: var(--button-bg);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+  ">
+    🌞
+  </button>
 
   <div class="container">
 
@@ -316,22 +345,17 @@
       </div>
     </div>
 
-    <!-- MAIN CONTENT -->
+    <!-- CENTER AREA -->
     <div class="main-content" data-aos="zoom-in-up">
       <div class="top-slider">
         <img src="S1.jpg" alt="Slide 1" data-aos="zoom-in" data-aos-delay="0" />
         <img src="S2.jpg" alt="Slide 2" data-aos="zoom-in" data-aos-delay="100" />
-        <img src="S3.jpg" alt="Slide 3" data-aos="zoom-in" data-aos-delay="200" />
-        <img src="S4.jpg" alt="Slide 4" data-aos="zoom-in" data-aos-delay="300" />
-        <img src="S5.jpg" alt="Slide 5" data-aos="zoom-in" data-aos-delay="400" />
+        <img src="S3.png" alt="Slide 3" data-aos="zoom-in" data-aos-delay="200" />
+        <img src="S4.png" alt="Slide 4" data-aos="zoom-in" data-aos-delay="300" />
+        <img src="S5.png" alt="Slide 5" data-aos="zoom-in" data-aos-delay="400" />
       </div>
-
       <div class="welcome-box">
         <h1 data-aos="fade-up" data-aos-delay="500">Welcome</h1>
-        <p data-aos="fade-up" data-aos-delay="700">
-          You're at the right place for original designs, smart execution, and clean visual experiences all powered by 
-          <strong>Deyoungprof Creative Hub</strong>. Let's build your next masterpiece together.
-        </p>
       </div>
     </div>
 
@@ -355,7 +379,46 @@
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 1200, once: true });
+    AOS.init({
+      duration: 1200,
+      once: true
+    });
+
+    const toggleBtn = document.getElementById('theme-toggle');
+
+    function setTheme(mode) {
+      if (mode === 'light') {
+        document.documentElement.style.setProperty('--bg-gradient', '#ffffff');
+        document.documentElement.style.setProperty('--text-color', '#111');
+        document.documentElement.style.setProperty('--card-bg', '#fdfdfd');
+        document.documentElement.style.setProperty('--rightbar-bg', '#f4f4f4');
+        document.documentElement.style.setProperty('--rightbar-text', '#000');
+        document.documentElement.style.setProperty('--link-hover', '#333');
+        document.documentElement.style.setProperty('--button-bg', '#000');
+        toggleBtn.textContent = '🌌';
+      } else {
+        document.documentElement.style.setProperty('--bg-gradient', 'linear-gradient(to bottom right, #021A73, #060710)');
+        document.documentElement.style.setProperty('--text-color', '#000');
+        document.documentElement.style.setProperty('--card-bg', '#fff9b4');
+        document.documentElement.style.setProperty('--rightbar-bg', '#001B78');
+        document.documentElement.style.setProperty('--rightbar-text', 'white');
+        document.documentElement.style.setProperty('--link-hover', '#002499');
+        document.documentElement.style.setProperty('--button-bg', 'orange');
+        toggleBtn.textContent = '🌞';
+      }
+      localStorage.setItem('mode', mode);
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      const current = localStorage.getItem('mode') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      setTheme(next);
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('mode') || 'dark';
+      setTheme(saved);
+    });
   </script>
 </body>
 </html>
